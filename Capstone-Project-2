@@ -1,0 +1,59 @@
+
+Steps to complete DevOps Capstone Project :
+=============================================
+
+Step 1: Set up of Server for project execution
+====================================================
+> Connect to AWS lab 
+> Create a EC2 server on AWS 
+> Install git , jenkins & docker 
+> Connect to Jenkins Dashboard
+> configure Maven 
+
+Step 2: Create a Build pipeline
+======================================================
+
+Write pipeline code :
+
+> clone the repository
+> Test the CODE
+> Build the code 
+
+Step 3: Deploy the code 
+===============================
+Write pipeline code :
+
+> Build a docker file 
+
+> Run the Image to create a container and deploy application 
+
+Step 4:
+===========================
+
+Setup webhook trigger on jenkins for continuous Integration and Deployment 
+
+=================================================================================
+
+Solution:
+==================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
