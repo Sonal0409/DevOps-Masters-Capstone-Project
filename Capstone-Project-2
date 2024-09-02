@@ -131,8 +131,53 @@ Now go to terminal of ec2 instance and run below command
 chmod 777 /var/run/docker.sock
 
 
+=================================
 
+Create a new Job --> select project as pipeline -->press Ok --> in Pipeline tab give below code
 
+pipeline{
+    
+    agent any
+    
+    tools{
+        maven 'mymaven'
+    }
+    
+    stages{
+        stage('Checkout Code')
+        {
+            steps{
+                git 'https://github.com/Sonal0409/MavenBuild-SL.git'
+            }
+        }
+        
+        stage('Build the code')
+        {
+            steps{
+                sh 'mvn package'
+            }
+        }
+        
+        stage('Build the Image')
+        {
+            steps{
+                sh 'docker build -t capstoneproject:$BUILD_NUMBER .'
+            }
+        }
+        
+        stage('Deploy the Image')
+        {
+            steps{
+                sh 'docker run -d -P capstoneproject:$BUILD_NUMBER'
+            }
+        }
+        
+        
+        
+    }
+    
+    
+}
 
 
 
