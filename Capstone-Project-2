@@ -180,7 +180,33 @@ pipeline{
 }
 
 
+Save the Job Now.
 
+
+Go to Github 
+
+fork the repo:
+
+go to the repository setting
+select webhooks on left side
+delete if any exisitng webhook
+
+click on createwebhook on right side
+
+provide following information:
+
+Payload URL : jenkinsurl/github-webhook/ ===> http://3.140.252.165:8080/github-webhook/
+
+Content type : select application/json
+
+Secret: no need of any value
+
+Which events would you like to trigger this webhook?
+
+select first option -- Just the push event.
+
+Select Active
+click on add webhook.
 
 
 
