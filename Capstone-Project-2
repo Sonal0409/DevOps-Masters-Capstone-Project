@@ -87,7 +87,21 @@ Take the screenshot for above command output
 
 press q to come out of above command
 
+=======================
+Setup jenkins dashboard
 
+Copy the Ec2 server Public IP address
+Open a new browser
+
+copy in the URL :  http://publicIP:8080
+
+Now go to the terminal and execute below command
+
+# cat /var/lib/jenkins/secrets/initialAdminPassword
+
+Copy the output password
+
+and paste it on the jenkins webpage
 
 
 
