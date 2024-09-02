@@ -118,7 +118,17 @@ Click on continue
 
 Click on save and finish
 
+Take screenshot
+
 You will be on jenkins dashboard
+
+Click on Manage Jenkins --> Click on tools --> Scroll down --> click on Add Maven --> Give name as mymaven --> save the changes.
+
+Take screenshot
+
+Now go to terminal of ec2 instance and run below command
+
+chmod 777 /var/run/docker.sock
 
 
 
