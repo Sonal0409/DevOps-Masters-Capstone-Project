@@ -1,0 +1,56 @@
+
+
+
+Before executing the pipleine give jenkins permsision to run docker commands
+ chmod 777 /var/run/docker.sock
+
+Create the following pipeline in jenkins
+
+pipeline{
+    tools{
+        maven 'mymaven'
+    }
+    agent any
+    stages{
+        stage('clone repo'){
+            steps{
+                git 'https://github.com/Sonal0409/DevOpsCodeDemo.git'
+            }
+        }
+        stage('Build Code'){
+            steps{
+                sh 'mvn package'
+            }
+        }
+        
+        
+        stage('build Image'){
+          
+            steps{
+                sh 'cp /var/lib/jenkins/workspace/CICDpipeline/target/addressbook.war .'
+                sh 'docker build -t myaddressbook .'
+            }
+        }
+        
+        stage('push Image'){
+            steps{
+
+withCredentials([string(credentialsId: 'DOCKER_HUB_PASWD', variable: 'DOCKER_HUB_PASWD')]) {
+                sh 'docker login -u edu123 -p ${DOCKER_HUB_PASWD}'
+                }
+              
+                sh 'docker tag myaddressbook edu123/myaddressbook'
+                sh 'docker push edu123/myaddressbook'
+            }
+        }
+        
+        stage('Deploy container'){
+            steps{
+                sh 'docker run -d -P edu123/myaddressbook'
+            }
+        }
+    }
+}
+
+
+
