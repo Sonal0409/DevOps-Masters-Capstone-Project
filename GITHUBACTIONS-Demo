@@ -30,5 +30,32 @@ CMD ["catalina.sh", "run"]
 
 Commit the file
 
+Go to repo--> .github folder/workflows/main.yml --> edit the file and remove all the content
+
+Remove the code in the file add the new code
+
+name: CI workflow 
+on: 
+ push:
+jobs:
+ buildCode:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Checkout
+     uses: actions/checkout@v3
+   - name: Setup Java and maven 
+     uses: actions/setup-java@v3
+     with:
+       java-version: '11'
+       distribution: 'temurin'
+       cache: maven 
+   - name: Build the code using maven 
+     run: mvn package 
+   - name: Install docker 
+     uses: docker/setup-buildx-action@v2
+   - name: Build an Image 
+     run: docker build -t githubactionimage:v1 .
+   - name: Run the Image 
+     run: docker run -d -P githubactionimage:v1
 
 
