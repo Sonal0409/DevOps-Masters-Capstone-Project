@@ -1,0 +1,17 @@
+name: CI workflow 
+on: 
+ push:
+jobs:
+ buildCode:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Checkout
+     uses: actions/checkout@v3
+   - name: Setup Java and maven 
+     uses: actions/setup-java@v3
+     with:
+       java-version: '11'
+       distribution: 'temurin'
+       cache: maven 
+   - name: Build the code using maven 
+     run: mvn package 
