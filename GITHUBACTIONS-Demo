@@ -15,3 +15,20 @@ jobs:
        cache: maven 
    - name: Build the code using maven 
      run: mvn package 
+
+
+
+Create anew file in the repository 
+Give name to the file as dockerfile
+Add below code:
+
+FROM tomcat:8
+COPY target/java-example.war /usr/local/tomcat/webapps/ROOT.war
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
+
+
+Commit the file
+
+
+
